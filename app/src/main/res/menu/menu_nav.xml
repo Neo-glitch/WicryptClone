@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Account">
+        <menu>
+            <group android:checkableBehavior="none">
+                <item android:id="@+id/transactions"
+                    android:title="Transactions"/>
+                <item android:id="@+id/referrals"
+                    android:title="Referrals"/>
+                <item android:id="@+id/my_devices"
+                    android:title="My Devices"/>
+                <item android:id="@+id/withdrawals"
+                    android:title="Withdrawals"/>
+                <item android:id="@+id/available_tokens"
+                    android:title="Available Tokens"/>
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="Others">
+        <menu>
+            <group android:checkableBehavior="none">
+                <item android:id="@+id/router_login"
+                    android:title="Router Login"/>
+                <item android:id="@+id/support_chat"
+                    android:title="Support Chat"/>
+                <item android:id="@+id/settings"
+                    android:title="Settings"/>
+                <item android:id="@+id/sign_out"
+                    android:title="Sign Out"/>
+            </group>
+        </menu>
+    </item>
+
+</menu>

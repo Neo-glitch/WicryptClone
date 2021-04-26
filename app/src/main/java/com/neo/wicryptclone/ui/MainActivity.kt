@@ -14,9 +14,7 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.neo.wicryptclone.R
 import com.neo.wicryptclone.databinding.ActivityMainBinding
-import com.neo.wicryptclone.ui.navactivities.MyDevicesActivity
-import com.neo.wicryptclone.ui.navactivities.ReferralsActivity
-import com.neo.wicryptclone.ui.navactivities.TransactionsActivity
+import com.neo.wicryptclone.ui.navactivities.*
 import com.neo.wicryptclone.utilities.PagerAdapter
 
 class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelectedListener{
@@ -108,12 +106,15 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 true
             }
             R.id.withdrawals -> {
+                startActivity(Intent(this, WithDrawalsActivity::class.java))
                 true
             }
             R.id.available_tokens -> {
+                startActivity(Intent(this, AvailableTokensActivity::class.java))
                 true
             }
             R.id.router_login -> {
+                startActivity(Intent(this, RouterLoginActivity::class.java))
                 true
             }
             R.id.support_chat -> {

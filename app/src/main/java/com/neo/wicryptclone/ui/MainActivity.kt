@@ -1,5 +1,6 @@
 package com.neo.wicryptclone.ui
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
@@ -9,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -18,10 +20,15 @@ import com.neo.wicryptclone.ui.navactivities.*
 import com.neo.wicryptclone.utilities.PagerAdapter
 
 class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelectedListener{
+    companion object{
+        private val ROUTER_ACTIVITY = 1
+    }
+
     private lateinit var binding: ActivityMainBinding
     private lateinit var mToggle: ActionBarDrawerToggle
     private lateinit var mDrawerLayout: DrawerLayout
     private lateinit var mToolbar: Toolbar
+    private lateinit var mViewPager: ViewPager2
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,11 +62,11 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     }
 
     private fun initViewPager() {
-        val viewPager = binding.layoutContent.viewPager
-        viewPager.adapter = PagerAdapter(this)
+        mViewPager= binding.layoutContent.viewPager
+        mViewPager.adapter = PagerAdapter(this)
 
         val tabLayout = binding.layoutContent.tabLayout
-        val tabLayoutMediator = TabLayoutMediator(tabLayout, viewPager, object : TabLayoutMediator.TabConfigurationStrategy{
+        val tabLayoutMediator = TabLayoutMediator(tabLayout, mViewPager, object : TabLayoutMediator.TabConfigurationStrategy{
             override fun onConfigureTab(tab: TabLayout.Tab, position: Int) {
                 when(position){
                     0 -> tab.text ="Home"
@@ -95,26 +102,32 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         return when(item.itemId){
             R.id.transactions -> {
                 startActivity(Intent(this, TransactionsActivity::class.java))
+                mDrawerLayout.closeDrawer(GravityCompat.START)
                 true
             }
             R.id.referrals ->{
                 startActivity(Intent(this, ReferralsActivity::class.java))
+                mDrawerLayout.closeDrawer(GravityCompat.START)
                 true
             }
             R.id.my_devices -> {
                 startActivity(Intent(this, MyDevicesActivity::class.java))
+                mDrawerLayout.closeDrawer(GravityCompat.START)
                 true
             }
             R.id.withdrawals -> {
                 startActivity(Intent(this, WithDrawalsActivity::class.java))
+                mDrawerLayout.closeDrawer(GravityCompat.START)
                 true
             }
             R.id.available_tokens -> {
                 startActivity(Intent(this, AvailableTokensActivity::class.java))
+                mDrawerLayout.closeDrawer(GravityCompat.START)
                 true
             }
             R.id.router_login -> {
-                startActivity(Intent(this, RouterLoginActivity::class.java))
+                startActivityForResult(Intent(this, RouterLoginActivity::class.java), ROUTER_ACTIVITY)
+                mDrawerLayout.closeDrawer(GravityCompat.START)
                 true
             }
             R.id.support_chat -> {
@@ -130,9 +143,18 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         }
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(requestCode == ROUTER_ACTIVITY && resultCode == Activity.RESULT_OK){
+            mViewPager.currentItem = 1
+        }
+    }
+
     override fun onBackPressed() {
         if(mDrawerLayout.isDrawerOpen(GravityCompat.START)){
             mDrawerLayout.closeDrawer(GravityCompat.START)
+        }else if(mViewPager.currentItem > 0){
+            mViewPager.currentItem = mViewPager.currentItem - 1
         } else{
             super.onBackPressed()
         }

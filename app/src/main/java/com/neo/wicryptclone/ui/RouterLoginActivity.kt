@@ -4,9 +4,7 @@ import android.app.Activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
-import com.neo.wicryptclone.R
 import com.neo.wicryptclone.databinding.ActivityRouterLoginBinding
-import com.neo.wicryptclone.utilities.ImainActivity
 
 
 class RouterLoginActivity : AppCompatActivity() {

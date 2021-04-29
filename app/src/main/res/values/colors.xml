@@ -5,8 +5,8 @@
 <!--    <color name="color_primary_dark">#FF3700B3</color>-->
     <color name="color_primary">#0C26A5</color>
     <color name="color_primary_dark">#0C26A5</color>
-<!--    <color name="color_secondary">#FF03DAC5</color>-->
-    <color name="color_secondary">#FFD700</color>
+    <color name="color_secondary">#0C26A5</color>
+    <color name="color_secondary_accent">#FFD700</color>
     <color name="color_secondary_dark">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>

@@ -17,10 +17,13 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.neo.wicryptclone.R
 import com.neo.wicryptclone.databinding.ActivityMainBinding
 import com.neo.wicryptclone.ui.navactivities.*
+import com.neo.wicryptclone.utilities.IMainActivity
 import com.neo.wicryptclone.utilities.PagerAdapter
 
-class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelectedListener{
-    companion object{
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener,
+    IMainActivity {
+
+    companion object {
         private val ROUTER_ACTIVITY = 1
     }
 
@@ -45,7 +48,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private fun initNavViewAndDrawer() {
         mDrawerLayout = binding.drawer
 
-        mToolbar.navigationIcon =resources.getDrawable(R.drawable.ic_nav_icon, null)
+        mToolbar.navigationIcon = resources.getDrawable(R.drawable.ic_nav_icon, null)
         mToggle = ActionBarDrawerToggle(
             this, mDrawerLayout, mToolbar,
             R.string.open,
@@ -62,19 +65,22 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     }
 
     private fun initViewPager() {
-        mViewPager= binding.layoutContent.viewPager
+        mViewPager = binding.layoutContent.viewPager
         mViewPager.adapter = PagerAdapter(this)
 
         val tabLayout = binding.layoutContent.tabLayout
-        val tabLayoutMediator = TabLayoutMediator(tabLayout, mViewPager, object : TabLayoutMediator.TabConfigurationStrategy{
-            override fun onConfigureTab(tab: TabLayout.Tab, position: Int) {
-                when(position){
-                    0 -> tab.text ="Home"
-                    1 -> tab.text = "Available Wifi"
-                    2 -> tab.text = "Connected Devices"
+        val tabLayoutMediator = TabLayoutMediator(
+            tabLayout,
+            mViewPager,
+            object : TabLayoutMediator.TabConfigurationStrategy {
+                override fun onConfigureTab(tab: TabLayout.Tab, position: Int) {
+                    when (position) {
+                        0 -> tab.text = "Home"
+                        1 -> tab.text = "Available Wifi"
+                        2 -> tab.text = "Connected Devices"
+                    }
                 }
-            }
-        })
+            })
         tabLayoutMediator.attach()
     }
 
@@ -90,22 +96,23 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when(item.itemId){
+        return when (item.itemId) {
             R.id.transactions -> {
                 startActivity(Intent(this, TransactionsActivity::class.java))
                 true
-            } else -> return super.onOptionsItemSelected(item)
+            }
+            else -> return super.onOptionsItemSelected(item)
         }
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        return when(item.itemId){
+        return when (item.itemId) {
             R.id.transactions -> {
                 startActivity(Intent(this, TransactionsActivity::class.java))
                 mDrawerLayout.closeDrawer(GravityCompat.START)
                 true
             }
-            R.id.referrals ->{
+            R.id.referrals -> {
                 startActivity(Intent(this, ReferralsActivity::class.java))
                 mDrawerLayout.closeDrawer(GravityCompat.START)
                 true
@@ -126,7 +133,10 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 true
             }
             R.id.router_login -> {
-                startActivityForResult(Intent(this, RouterLoginActivity::class.java), ROUTER_ACTIVITY)
+                startActivityForResult(
+                    Intent(this, RouterLoginActivity::class.java),
+                    ROUTER_ACTIVITY
+                )
                 mDrawerLayout.closeDrawer(GravityCompat.START)
                 true
             }
@@ -136,7 +146,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             R.id.settings -> {
                 true
             }
-            R.id.sign_out ->{
+            R.id.sign_out -> {
                 true
             }
             else -> true
@@ -145,18 +155,22 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if(requestCode == ROUTER_ACTIVITY && resultCode == Activity.RESULT_OK){
+        if (requestCode == ROUTER_ACTIVITY && resultCode == Activity.RESULT_OK) {
             mViewPager.currentItem = 1
         }
     }
 
     override fun onBackPressed() {
-        if(mDrawerLayout.isDrawerOpen(GravityCompat.START)){
+        if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
             mDrawerLayout.closeDrawer(GravityCompat.START)
-        }else if(mViewPager.currentItem > 0){
+        } else if (mViewPager.currentItem > 0) {
             mViewPager.currentItem = mViewPager.currentItem - 1
-        } else{
+        } else {
             super.onBackPressed()
         }
+    }
+
+    override fun showBillingRateDialog() {
+
     }
 }

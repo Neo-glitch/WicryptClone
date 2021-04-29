@@ -14,14 +14,14 @@
         android:backgroundTint="@android:color/white"
         android:text="See Available Networks"
         android:textAlignment="center"
-        android:textColor="@color/color_secondary"
+        android:textColor="@color/color_secondary_accent"
         android:textSize="10sp"
         android:textStyle="bold"
         app:cornerRadius="15dp"
         app:layout_constraintEnd_toEndOf="@+id/textView27"
         app:layout_constraintStart_toStartOf="@+id/textView27"
         app:layout_constraintTop_toBottomOf="@+id/textView27"
-        app:strokeColor="@color/color_secondary"
+        app:strokeColor="@color/color_secondary_accent"
         app:strokeWidth="1dp" />
 
     <ProgressBar

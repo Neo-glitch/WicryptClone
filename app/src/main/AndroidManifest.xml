@@ -21,12 +21,15 @@
             android:parentActivityName=".ui.MainActivity"/>
         <activity android:name=".ui.RouterLoginActivity"
             android:parentActivityName=".ui.MainActivity"/>
-        <activity android:name=".ui.ShareWCActivity" />
-        <activity android:name=".ui.FundWalletActivity" />
+        <activity android:name=".ui.ShareWCActivity"
+            android:parentActivityName=".ui.MainActivity"/>
+        <activity android:name=".ui.FundWalletActivity"
+            android:parentActivityName=".ui.MainActivity"/>
         <activity android:name=".ui.WelcomeActivity" />
         <activity android:name=".ui.LaunchActivity" />
         <activity android:name=".ui.MainActivity"
-            android:theme="@style/Theme.WicryptClone.NoActionBar">
+            android:theme="@style/Theme.WicryptClone.NoActionBar"
+            android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

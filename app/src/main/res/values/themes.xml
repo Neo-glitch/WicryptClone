@@ -30,4 +30,11 @@
         <!-- sets color for overflow button-->
         <item name="actionOverflowButtonStyle">@style/actionOverflowButtonStyle</item>
     </style>
+
+
+    <!--bottom sheet dialog animation-->
+    <style name="DialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/slide_in_bottom</item>
+        <item name="android:windowExitAnimation">@anim/slide_out_bottom</item>
+    </style>
 </resources>

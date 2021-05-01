@@ -92,12 +92,13 @@
             android:text="UPDATE"
             app:cornerRadius="0dp" />
 
-        <TextView
-            android:id="@+id/txt_cancel"
+        <Button
+            android:id="@+id/btn_cancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_weight="1"
+            android:backgroundTint="@android:color/white"
             android:fontFamily="sans-serif-medium"
             android:text="CANCEL"
             android:textAlignment="center"

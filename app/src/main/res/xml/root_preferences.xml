@@ -1,0 +1,62 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        app:iconSpaceReserved="false"
+        app:title="Basic">
+
+        <EditTextPreference
+            app:iconSpaceReserved="false"
+            app:key="hotspot_name"
+            app:defaultValue="Wicrypt 43902"
+            app:title="Hotspot Name"
+            app:useSimpleSummaryProvider="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:iconSpaceReserved="false"
+        app:title="Auto Re-scan">
+
+        <SwitchPreferenceCompat
+            app:iconSpaceReserved="false"
+            app:key="toggle_auto_scan"
+            app:summaryOn="Turn off to rescan for devices manually"
+            app:summaryOff="Turn on to automatically rescan for\nHotspot connections when Wifi is on and\nconnected devices when Hotspot is on"
+            app:title="Toggle Auto Scan" />
+
+        <EditTextPreference
+            app:iconSpaceReserved="false"
+            app:dependency="toggle_auto_scan"
+            app:key="scan_delay"
+            app:defaultValue="30s"
+            app:title="Scan Delay"
+            app:useSimpleSummaryProvider="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:iconSpaceReserved="false"
+        app:title="Info">
+
+        <Preference
+            app:iconSpaceReserved="false"
+            app:summary="1.1.31"
+            app:title="version" />
+
+        <Preference
+            app:iconSpaceReserved="false"
+            app:key="send_feedback"
+            app:summary="Got any questions or suggestions? Let's hear it."
+            app:title="Send Feedback" />
+        <Preference
+            app:iconSpaceReserved="false"
+            app:key="privacy_policy"
+            app:title="Privacy Policy" />
+        <Preference
+            app:iconSpaceReserved="false"
+            app:key="terms_and_conditions"
+            app:title="Terms &amp; Conditions" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

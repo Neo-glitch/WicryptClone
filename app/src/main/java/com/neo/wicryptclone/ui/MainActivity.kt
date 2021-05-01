@@ -1,10 +1,12 @@
 package com.neo.wicryptclone.ui
 
 import android.app.Activity
+import android.app.Dialog
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
+import android.view.*
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -15,6 +17,7 @@ import com.google.android.material.navigation.NavigationView
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.neo.wicryptclone.R
+import com.neo.wicryptclone.SettingsActivity
 import com.neo.wicryptclone.databinding.ActivityMainBinding
 import com.neo.wicryptclone.ui.navactivities.*
 import com.neo.wicryptclone.utilities.IMainActivity
@@ -144,6 +147,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 true
             }
             R.id.settings -> {
+                startActivity(Intent(this, SettingsActivity::class.java))
+                mDrawerLayout.closeDrawer(GravityCompat.START)
                 true
             }
             R.id.sign_out -> {

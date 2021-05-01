@@ -2,14 +2,12 @@ package com.neo.wicryptclone.ui.viewpagerfragments
 
 
 import android.app.Dialog
-import android.content.Context
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.view.WindowManager
+import android.view.*
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -62,12 +60,36 @@ class HomeFragment : Fragment(), View.OnClickListener {
                 requireContext().startActivity(Intent(requireContext(), ShareWCActivity::class.java))
             }
             R.id.iv_withdraw ->{
-                Toast.makeText(requireContext(), "clicked", Toast.LENGTH_SHORT).show()
+                showBottomSheetDialog()
             }
             R.id.iv_router_login ->{
                 requireContext().startActivity(Intent(requireContext(), RouterLoginActivity::class.java))
             }
         }
+    }
+
+    private fun showBottomSheetDialog() {
+        val dialog = Dialog(requireContext())
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setContentView(R.layout.bottom_sheet_dialog)
+
+        dialog.show()
+        dialog.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.window?.attributes?.windowAnimations = R.style.DialogAnimation
+        dialog.window?.setGravity(Gravity.BOTTOM)
+        dialog.setCancelable(false)
+        dialog.setCanceledOnTouchOutside(false)
+
+        initDialogClickListeners(dialog)
+    }
+
+    private fun initDialogClickListeners(dialog: Dialog) {
+        val positiveButton = dialog.findViewById<Button>(R.id.btn_upgrade)
+        val negativeButton = dialog.findViewById<TextView>(R.id.tv_cancel)
+
+        negativeButton.setOnClickListener{dialog.dismiss()}
+        positiveButton.setOnClickListener { Toast.makeText(requireContext(), "upgraded", Toast.LENGTH_SHORT).show() }
     }
 
     private fun showProgressBar() {
@@ -93,7 +115,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
         mDialog.setContentView(R.layout.dialog_billing_rate)
 
         val positiveBtn = mDialog.findViewById<Button>(R.id.btn_update)
-        val negativeBtn = mDialog.findViewById<TextView>(R.id.txt_cancel)
+        val negativeBtn = mDialog.findViewById<Button>(R.id.btn_cancel)
 
 //        mDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         positiveBtn.setOnClickListener {

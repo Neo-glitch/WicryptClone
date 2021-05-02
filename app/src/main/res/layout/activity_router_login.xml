@@ -9,19 +9,20 @@
     <Button
         android:id="@+id/btn_available_networks"
         android:layout_width="wrap_content"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:layout_marginTop="10dp"
         android:backgroundTint="@android:color/white"
+        android:fontFamily="sans-serif-condensed"
         android:text="See Available Networks"
         android:textAlignment="center"
-        android:textColor="@color/color_secondary"
-        android:textSize="10sp"
+        android:textColor="@color/color_secondary_accent"
+        android:textSize="12sp"
         android:textStyle="bold"
         app:cornerRadius="15dp"
         app:layout_constraintEnd_toEndOf="@+id/textView27"
         app:layout_constraintStart_toStartOf="@+id/textView27"
         app:layout_constraintTop_toBottomOf="@+id/textView27"
-        app:strokeColor="@color/color_secondary"
+        app:strokeColor="@color/color_secondary_accent"
         app:strokeWidth="1dp" />
 
     <ProgressBar
@@ -31,24 +32,24 @@
         android:layout_height="105dp"
         android:layout_marginTop="32dp"
         android:indeterminateOnly="false"
+        android:max="30"
+        tools:progress="10"
         android:progressDrawable="@drawable/cirlce_progress_bar"
         app:layout_constraintEnd_toEndOf="@+id/btn_available_networks"
         app:layout_constraintHorizontal_bias="0.513"
         app:layout_constraintStart_toStartOf="@+id/btn_available_networks"
-        app:layout_constraintTop_toBottomOf="@+id/btn_available_networks"
-        tools:progress="70"
-        android:progress="60"/>
+        app:layout_constraintTop_toBottomOf="@+id/btn_available_networks" />
 
     <TextView
         android:id="@+id/text_view_progress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="20"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toBottomOf="@+id/progressBar"
         app:layout_constraintEnd_toEndOf="@+id/progressBar"
         app:layout_constraintStart_toStartOf="@+id/progressBar"
-        app:layout_constraintTop_toTopOf="@+id/progressBar" />
+        app:layout_constraintTop_toTopOf="@+id/progressBar"
+        tools:text="20" />
 
     <Button
         android:id="@+id/btn_login"
@@ -100,7 +101,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
-        android:text="622869"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Display2"
         android:textColor="@color/black"
@@ -108,7 +108,8 @@
         app:layout_constraintEnd_toEndOf="@+id/textView29"
         app:layout_constraintHorizontal_bias="0.62"
         app:layout_constraintStart_toStartOf="@+id/textView29"
-        app:layout_constraintTop_toBottomOf="@+id/textView29" />
+        app:layout_constraintTop_toBottomOf="@+id/textView29"
+        tools:text="622869" />
 
     <TextView
         android:id="@+id/textView29"
@@ -140,7 +141,7 @@
         app:layout_constraintTop_toBottomOf="@+id/router_code" />
 
     <ImageView
-        android:id="@+id/imageView11"
+        android:id="@+id/iv_copy_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -152,12 +153,12 @@
         app:srcCompat="@drawable/ic_copy" />
 
     <ImageView
-        android:id="@+id/imageView12"
+        android:id="@+id/iv_copy_code"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/router_code"
-        app:layout_constraintEnd_toEndOf="@+id/imageView11"
+        app:layout_constraintEnd_toEndOf="@+id/iv_copy_email"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/router_code"
         app:layout_constraintTop_toTopOf="@+id/router_code"

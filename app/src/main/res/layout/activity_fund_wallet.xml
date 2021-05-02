@@ -23,7 +23,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView3"
+        android:id="@+id/cv_card"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
@@ -76,15 +76,15 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView6"
+        android:id="@+id/cv_bank"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         app:cardCornerRadius="8dp"
         app:cardElevation="4dp"
-        app:layout_constraintEnd_toEndOf="@+id/cardView3"
-        app:layout_constraintStart_toStartOf="@+id/cardView3"
-        app:layout_constraintTop_toBottomOf="@+id/cardView3">
+        app:layout_constraintEnd_toEndOf="@+id/cv_card"
+        app:layout_constraintStart_toStartOf="@+id/cv_card"
+        app:layout_constraintTop_toBottomOf="@+id/cv_card">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -129,7 +129,7 @@
     </androidx.cardview.widget.CardView>
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btn_add_fund"
         android:layout_width="0dp"
         android:layout_height="55dp"
         android:layout_marginStart="82dp"
@@ -139,7 +139,7 @@
         android:text="ADD FUND"
         android:textSize="14sp"
         app:cornerRadius="15dp"
-        app:layout_constraintEnd_toEndOf="@+id/cardView6"
-        app:layout_constraintStart_toStartOf="@+id/cardView6"
-        app:layout_constraintTop_toBottomOf="@+id/cardView6" />
+        app:layout_constraintEnd_toEndOf="@+id/cv_bank"
+        app:layout_constraintStart_toStartOf="@+id/cv_bank"
+        app:layout_constraintTop_toBottomOf="@+id/cv_bank" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,10 +1,7 @@
 package com.neo.wicryptclone.ui
 
 import android.app.Activity
-import android.app.Dialog
 import android.content.Intent
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -20,11 +17,13 @@ import com.neo.wicryptclone.R
 import com.neo.wicryptclone.SettingsActivity
 import com.neo.wicryptclone.databinding.ActivityMainBinding
 import com.neo.wicryptclone.ui.navactivities.*
-import com.neo.wicryptclone.utilities.IMainActivity
 import com.neo.wicryptclone.utilities.PagerAdapter
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener,
-    IMainActivity {
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener{
 
     companion object {
         private val ROUTER_ACTIVITY = 1
@@ -109,46 +108,61 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        mDrawerLayout.closeDrawer(GravityCompat.START)
         return when (item.itemId) {
             R.id.transactions -> {
-                startActivity(Intent(this, TransactionsActivity::class.java))
-                mDrawerLayout.closeDrawer(GravityCompat.START)
+                CoroutineScope(Dispatchers.Main).launch {
+                    delay(270)
+                    startActivity(Intent(this@MainActivity, TransactionsActivity::class.java))
+                }
                 true
             }
             R.id.referrals -> {
-                startActivity(Intent(this, ReferralsActivity::class.java))
-                mDrawerLayout.closeDrawer(GravityCompat.START)
+                CoroutineScope(Dispatchers.Main).launch {
+                    delay(270)
+                    startActivity(Intent(this@MainActivity, ReferralsActivity::class.java))
+                }
                 true
             }
             R.id.my_devices -> {
-                startActivity(Intent(this, MyDevicesActivity::class.java))
-                mDrawerLayout.closeDrawer(GravityCompat.START)
+                CoroutineScope(Dispatchers.Main).launch {
+                    delay(270)
+                    startActivity(Intent(this@MainActivity, MyDevicesActivity::class.java))
+                }
                 true
             }
             R.id.withdrawals -> {
-                startActivity(Intent(this, WithDrawalsActivity::class.java))
-                mDrawerLayout.closeDrawer(GravityCompat.START)
+                CoroutineScope(Dispatchers.Main).launch {
+                    delay(270)
+                    startActivity(Intent(this@MainActivity, WithDrawalsActivity::class.java))
+                }
                 true
             }
             R.id.available_tokens -> {
-                startActivity(Intent(this, AvailableTokensActivity::class.java))
-                mDrawerLayout.closeDrawer(GravityCompat.START)
+                CoroutineScope(Dispatchers.Main).launch {
+                    delay(270)
+                    startActivity(Intent(this@MainActivity, AvailableTokensActivity::class.java))
+                }
                 true
             }
             R.id.router_login -> {
-                startActivityForResult(
-                    Intent(this, RouterLoginActivity::class.java),
-                    ROUTER_ACTIVITY
-                )
-                mDrawerLayout.closeDrawer(GravityCompat.START)
+                CoroutineScope(Dispatchers.Main).launch {
+                    delay(270)
+                    startActivityForResult(
+                        Intent(this@MainActivity, RouterLoginActivity::class.java),
+                        ROUTER_ACTIVITY
+                    )
+                }
                 true
             }
             R.id.support_chat -> {
                 true
             }
             R.id.settings -> {
-                startActivity(Intent(this, SettingsActivity::class.java))
-                mDrawerLayout.closeDrawer(GravityCompat.START)
+                CoroutineScope(Dispatchers.Main).launch {
+                    delay(270)
+                    startActivity(Intent(this@MainActivity, SettingsActivity::class.java))
+                }
                 true
             }
             R.id.sign_out -> {
@@ -173,9 +187,5 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         } else {
             super.onBackPressed()
         }
-    }
-
-    override fun showBillingRateDialog() {
-
     }
 }

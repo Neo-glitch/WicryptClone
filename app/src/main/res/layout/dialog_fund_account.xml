@@ -6,12 +6,25 @@
     android:layout_height="wrap_content">
 
     <TextView
+        android:id="@+id/tv_rate2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="10dp"
+        android:text="360 NGN"
+        android:textAlignment="center"
+        android:textColor="@color/color_secondary_variant"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/textView37"
+        app:layout_constraintTop_toBottomOf="@+id/textView37" />
+
+    <TextView
         android:id="@+id/textView36"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:fontFamily="sans-serif-medium"
-        android:text="Billing Rate"
+        android:text="Fund Account"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="@color/color_primary"
         android:textSize="24sp"
@@ -28,7 +41,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="25dp"
         android:fontFamily="sans-serif-medium"
-        android:text="Please set the rate at which connected\nusers will be billed per kb"
+        android:text="Enter the amount you wish to fund in NGN"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,24 +51,21 @@
         android:id="@+id/et_rate"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:text="0.38"
-        android:layout_marginEnd="10dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="25dp"
         android:ems="10"
         android:inputType="number"
         app:layout_constraintEnd_toStartOf="@+id/textView38"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView37" />
+        app:layout_constraintStart_toStartOf="@+id/textView37"
+        app:layout_constraintTop_toBottomOf="@+id/tv_rate" />
 
     <TextView
         android:id="@+id/textView38"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-medium"
-        android:text="NGN/GB"
-        android:textColor="@color/color_primary"
+        android:text="NGN"
+        android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintBaseline_toBaselineOf="@+id/et_rate"
         app:layout_constraintEnd_toEndOf="@+id/textView37" />
@@ -64,33 +74,34 @@
         android:id="@+id/tv_rate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="0.38 NGN -> 0 WC"
+        android:layout_marginStart="4dp"
+        android:text="= 1 WC"
         android:textAlignment="center"
         android:textColor="@color/color_primary"
         android:textSize="14sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/tv_rate2"
         app:layout_constraintEnd_toEndOf="@+id/textView37"
-        app:layout_constraintStart_toStartOf="@+id/textView37"
-        app:layout_constraintTop_toBottomOf="@+id/et_rate" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/tv_rate2" />
 
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="15dp"
         android:weightSum="2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/textView38"
         app:layout_constraintStart_toStartOf="@+id/et_rate"
-        app:layout_constraintTop_toBottomOf="@+id/tv_rate"
+        app:layout_constraintTop_toBottomOf="@+id/et_rate"
         app:layout_constraintVertical_bias="0.0">
 
         <Button
-            android:id="@+id/btn_update"
+            android:id="@+id/btn_fund"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="UPDATE"
+            android:text="FUND"
             app:cornerRadius="0dp" />
 
         <Button

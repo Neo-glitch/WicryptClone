@@ -89,7 +89,10 @@ class HomeFragment : Fragment(), View.OnClickListener {
         val negativeButton = dialog.findViewById<TextView>(R.id.tv_cancel)
 
         negativeButton.setOnClickListener{dialog.dismiss()}
-        positiveButton.setOnClickListener { Toast.makeText(requireContext(), "upgraded", Toast.LENGTH_SHORT).show() }
+        positiveButton.setOnClickListener {
+            Toast.makeText(requireContext(), "upgrade feature coming soon", Toast.LENGTH_SHORT).show()
+            dialog.dismiss()
+        }
     }
 
     private fun showProgressBar() {
@@ -97,7 +100,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
         // makes buttons on view to be interacted with
         requireActivity().window.setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
-        val countDownTimer = object : CountDownTimer(3500, 1000){
+        val countDownTimer = object : CountDownTimer(2000, 1000){
             override fun onTick(p0: Long) {
             }
 
@@ -113,13 +116,12 @@ class HomeFragment : Fragment(), View.OnClickListener {
     private fun showBillingRateDialog() {
         mDialog = Dialog(requireContext())
         mDialog.setContentView(R.layout.dialog_billing_rate)
-
         val positiveBtn = mDialog.findViewById<Button>(R.id.btn_update)
         val negativeBtn = mDialog.findViewById<Button>(R.id.btn_cancel)
 
-//        mDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         positiveBtn.setOnClickListener {
-            Toast.makeText(requireContext(), "positive button clicked", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "Billing rate updated", Toast.LENGTH_SHORT).show()
+            mDialog.dismiss()
         }
         negativeBtn.setOnClickListener {
             mDialog.dismiss()
